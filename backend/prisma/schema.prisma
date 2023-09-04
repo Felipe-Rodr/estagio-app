@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Tipo {
+  regular
+  avulso
+}
+
+model cliente {
+  id         Int      @id @default(autoincrement())
+  cnpj       String   @unique @db.VarChar(14)
+  nome       String   @db.VarChar(100)
+  data       DateTime @default(now())
+  tipo       Tipo
+  telefone   String   @db.VarChar(30)
+  email      String   @db.VarChar(150)
+  enderecoId Int      @unique
+  endereco   endereco @relation(fields: [enderecoId], references: [id], onDelete: Cascade)
+  pessoas    pessoa[]
+}
+
+model endereco {
+  id         Int      @id @default(autoincrement())
+  cep        String   @db.VarChar(20)
+  logradouro String   @db.VarChar(150)
+  numero     Int
+  bairro     String   @db.VarChar(50)
+  cidade     String   @db.VarChar(50)
+  estado     String   @db.VarChar(50)
+  cliente    cliente?
+}
+
+model pessoa {
+  id              Int      @id @default(autoincrement())
+  cpf             String   @db.VarChar(11)
+  nome            String   @db.VarChar(100)
+  data_nascimento DateTime
+  telefone        String   @db.VarChar(30)
+  email           String   @db.VarChar(150)
+  clientes        cliente[]
+}
