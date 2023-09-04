@@ -5,7 +5,7 @@ Requerimentos:
   -Node.js 16+
 
 Como usar:
-  abra um terminal na pasta backend e digite "npm i" no terminal.
-  abra um terminal na pasta frontend e digite "npm i" no terminal.
-  Abra um terminal na pasta root (estagio-app) e digite "npm run backend"
-  Abra um terminal na pasta root (estagio-app) e digite "npm run frontend"
+  -abra um terminal na pasta backend e digite "npm i" no terminal.
+  -abra um terminal na pasta frontend e digite "npm i" no terminal.
+  -Abra um terminal na pasta root (estagio-app) e digite "npm run backend"
+  -Abra um terminal na pasta root (estagio-app) e digite "npm run frontend"
